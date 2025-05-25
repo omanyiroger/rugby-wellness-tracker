@@ -1,0 +1,32 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nondescripts Rugby Wellness</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="header-container">
+        <!-- Use logo from the correct path -->
+        <img src="{{ url_for('static', filename='images/team_logo.jpg') }}" alt="club logo" class="logo-header">
+        <h1 class="header-title main-title">Nondescripts Rugby Wellness</h1>
+        <div class="subtitle">Centenary Edition 1923-2023</div>
+        <div class="centenary-badge">100 YEARS</div>
+    </div>
+    <nav class="navbar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('view_availability') }}">Availability</a>
+        <a href="{{ url_for('view_first_team') }}">First Team</a>
+        <a href="{{ url_for('view_second_team') }}">Second Team</a>
+        <a href="{{ url_for('view_strapping') }}">Strapping</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <div class="main-content-card">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

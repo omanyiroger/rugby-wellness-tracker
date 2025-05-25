@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ team }} Team Players</h2>
+<ul>
+{% for pid, name, pos in players %}
+    <li>{{ pid }}: {{ name }} ({{ pos }})</li>
+{% endfor %}
+</ul>
+{% endblock %}

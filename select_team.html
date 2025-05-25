@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Select 23 Player IDs for the {{ team }} Team (comma separated):</h2>
+<form method="post">
+    <input type="text" name="player_ids" style="width:400px;">
+    <input type="submit" value="Select Team">
+</form>
+{% endblock %}

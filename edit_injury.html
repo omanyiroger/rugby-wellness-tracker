@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Injury</h2>
+<form method="post">
+    <label>Injury Type: <input type="text" name="injury_type" value="{{ injury['injury_type'] }}"></label><br>
+    <label>Body Part: <input type="text" name="body_part" value="{{ injury['body_part'] }}"></label><br>
+    <label>Severity: <input type="text" name="severity" value="{{ injury['severity'] }}"></label><br>
+    <input type="submit" value="Update Injury">
+</form>
+<a href="{{ url_for('view_injuries') }}">Back to Injury List</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Player</h2>
+<form method="post">
+    <label>Name: <input type="text" name="name" value="{{ player['name'] }}"></label><br>
+    <label>Date of Birth: <input type="text" name="dob" value="{{ player['dob'] }}"></label><br>
+    <label>Age: <input type="number" name="age" value="{{ player['age'] }}"></label><br>
+    <label>Position: <input type="text" name="position" value="{{ player['position'] }}"></label><br>
+    <input type="submit" value="Update Player">
+</form>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

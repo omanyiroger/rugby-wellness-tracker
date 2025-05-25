@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+    <label>Player ID: <input type="text" name="player_id"></label><br>
+    <label>Name: <input type="text" name="name"></label><br>
+    <label>Date of Birth (YYYY-MM-DD): <input type="text" name="dob"></label><br>
+    <label>Age: <input type="number" name="age"></label><br>
+    <label>Position: <input type="text" name="position"></label><br>
+    <input type="submit" value="Add Player">
+</form>
+{% endblock %}

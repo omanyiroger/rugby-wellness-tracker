@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Select First Team</h2>
+<form method="post">
+    <table border="1">
+        <tr>
+            <th>Select</th>
+            <th>Player ID</th>
+            <th>Name</th>
+            <th>Position</th>
+        </tr>
+        {% for player in players %}
+        <tr>
+            <td><input type="checkbox" name="player_ids" value="{{ player['player_id'] }}"></td>
+            <td>{{ player['player_id'] }}</td>
+            <td>{{ player['name'] }}</td>
+            <td>{{ player['position'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="Save First Team">
+</form>
+{% endblock %}

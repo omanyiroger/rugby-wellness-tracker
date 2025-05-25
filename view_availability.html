@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+    <label>Day:
+        <select name="day">
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+        </select>
+    </label>
+    <input type="submit" value="View">
+</form>
+{% if players %}
+    <h3>Availability for {{ day }}</h3>
+    <ul>
+    {% for pid, name, available, reason in players %}
+        <li>{{ pid }}: {{ name }} - 
+            {% if available is none %}Not Set
+            {% elif available %}Available
+            {% else %}Unavailable{% endif %}
+            {% if reason %} (Reason: {{ reason }}){% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

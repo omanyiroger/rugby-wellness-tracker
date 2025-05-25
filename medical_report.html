@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="main-content-card">
+    <h2>Generate Medical Report</h2>
+    <form method="post">
+        <label for="player_id">Player:</label>
+        <select name="player_id" id="player_id" required>
+            <option value="">Select player</option>
+            {% for p in players %}
+                <option value="{{ p['player_id'] }}">{{ p['name'] }} ({{ p['player_id'] }})</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Generate Report">
+    </form>
+
+    {% if report %}
+        {% set player = report.player %}
+        <div class="report-card" style="margin-top:2em; background:rgba(255,255,255,0.07); border-radius:12px; padding:1.5em;">
+            <h3 style="color:#ffd700;">Player: {{ player[0] }}</h3>
+            <p><strong>Date of Birth:</strong> {{ player[1] }}</p>
+            <p><strong>Age:</strong> {{ player[2] }}</p>
+            <p><strong>Position:</strong> {{ player[3] }}</p>
+            <hr>
+            <h4 style="color:#ffd700;">Injuries</h4>
+            {% if report.injuries %}
+                <ul>
+                {% for injury in report.injuries %}
+                    <li>
+                        <strong>{{ injury[0] }}</strong> ({{ injury[1] }}) - {{ injury[2] }}<br>
+                        <small>Date: {{ injury[3] }}</small>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No injuries recorded.</p>
+            {% endif %}
+            <h4 style="color:#ffd700;">Rehabilitation Records</h4>
+            {% if report.rehabs %}
+                <ul>
+                {% for rehab in report.rehabs %}
+                    <li>
+                        <strong>{{ rehab[3] }}</strong> - {{ rehab[1] }}<br>
+                        <small>Date: {{ rehab[2] }}</small><br>
+                        Notes: {{ rehab[0] }}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No rehabilitation records.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

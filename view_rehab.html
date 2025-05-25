@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Rehabilitation Progress</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Player</th>
+        <th>Injury</th>
+        <th>Notes</th>
+        <th>Status</th>
+        <th>Date Updated</th>
+    </tr>
+    {% for rehab in rehab_records %}
+    <tr>
+        <td>{{ rehab['id'] }}</td>
+        <td>{{ rehab['name'] }} ({{ rehab['player_id'] }})</td>
+        <td>{{ rehab['injury_type'] }}</td>
+        <td>{{ rehab['notes'] }}</td>
+        <td>{{ rehab['status'] }}</td>
+        <td>{{ rehab['date_updated'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

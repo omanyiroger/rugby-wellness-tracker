@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Log Injury</h2>
+<form method="post">
+    <label for="player_id">Player ID:</label>
+    <input type="text" id="player_id" name="player_id" placeholder="Enter Player ID" required>
+
+    <label for="injury_type">Injury Type:</label>
+    <input type="text" id="injury_type" name="injury_type" placeholder="e.g. Sprain" required>
+
+    <label for="body_part">Body Part:</label>
+    <input type="text" id="body_part" name="body_part" placeholder="e.g. Knee" required>
+
+    <label for="severity">Severity (Mild/Moderate/Severe):</label>
+    <input type="text" id="severity" name="severity" placeholder="e.g. Moderate" required>
+
+    <input type="submit" value="Log Injury">
+</form>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Medical Reports</title>
+</head>
+<body>
+    <h1>View Medical Report</h1>
+
+    <form method="POST">
+        <label for="player_id">Select Player:</label>
+        <select name="player_id" required>
+            {% for player in players %}
+                <option value="{{ player['player_id'] }}" {% if selected_player == player['player_id'] %}selected{% endif %}>
+                    {{ player['name'] }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">View Report</button>
+    </form>
+
+    {% if report %}
+        <hr>
+        <h2>Player Information</h2>
+        <p><strong>Name:</strong> {{ report.player[0] }}</p>
+        <p><strong>DOB:</strong> {{ report.player[1] }}</p>
+        <p><strong>Age:</strong> {{ report.player[2] }}</p>
+        <p><strong>Position:</strong> {{ report.player[3] }}</p>
+
+        <h3>Injuries</h3>
+        {% if report.injuries %}
+            <ul>
+                {% for injury in report.injuries %}
+                    <li>{{ injury[0] }} to {{ injury[1] }} — {{ injury[2] }} (Logged: {{ injury[3] }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No injuries recorded.</p>
+        {% endif %}
+
+        <h3>Rehabilitation</h3>
+        {% if report.rehabs %}
+            <ul>
+                {% for rehab in report.rehabs %}
+                    <li>Status: {{ rehab[3] }} | Notes: {{ rehab[0] }} | Date: {{ rehab[2] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No rehabilitation records found.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
